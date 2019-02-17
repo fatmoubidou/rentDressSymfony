@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DressController!{% endblock %}
+
+{% block body %}
+  <h2>Le catalogue</h2>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="http://placehold.it/350x150" alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="{{path('single')}}">lire la suite</a>
+  </div>
+</div>
+{% endblock %}
