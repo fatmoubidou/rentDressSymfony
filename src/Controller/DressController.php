@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Dress;
 
 class DressController extends AbstractController
 {
@@ -12,8 +13,12 @@ class DressController extends AbstractController
      */
     public function index()
     {
+      $repo = $this->getDoctrine()->getRepository(Dress::Class);
+      $dresses = $repo->findAll();
+
         return $this->render('dress/index.html.twig', [
             'controller_name' => 'DressController',
+            'dresses' => $dresses
         ]);
     }
 
@@ -26,12 +31,14 @@ class DressController extends AbstractController
     }
 
     /**
-     * @Route("/single/12", name="single")
+     * @Route("/single/{id}", name="single")
      */
-    public function single()
+    public function single($id)
     {
+      $repo = $this->getDoctrine()->getRepository(Dress::Class);
+      $dress = $repo->find($id);
       return $this->render('dress/single.html.twig',[
-
+        'dress'=>$dress
       ]);
     }
 }
